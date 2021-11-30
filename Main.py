@@ -13,7 +13,7 @@ from win32com.client import Dispatch
 import requests
 from ss import *
 import json
-
+                                                #change the path_directry path according to your path destination
 li = []
 class virtual_assistant:
     def __init__(self):
@@ -138,7 +138,7 @@ class virtual_assistant:
             self.speak(joke_gen)
 
         elif 'news' in command:
-            url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=54b0b263d9cd48a2a6c732a299f28df5"
+            url = "https://newsapi.org/v2/top-headlines?country=us&apiKey={your API key}"
             data = requests.get(url).json()
             try:
                 obj = self.news(data)
@@ -153,7 +153,7 @@ class virtual_assistant:
 
         elif 'weather' in command:
             self.speak("Weather in phagwara is :")
-            complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=d9f7204fa8b25b7849b0a5b7ede29404&q=Phagwara"
+            complete_url = "http://api.openweathermap.org/data/2.5/weather?appid={your API key}&q={your city}"
             response = requests.get(complete_url)
             x = response.json()
             y = x["main"]
@@ -167,7 +167,7 @@ class virtual_assistant:
             self.speak("Description : ")
             self.speak(z[0]["description"])
 
-        elif 'send message' in command:
+        elif 'send message' in command:                     #change the coordinate  according to your pc interface
             self.speak("Sending What's app message.........")
             webbrowser.open("https://web.whatsapp.com/")
             time.sleep(8)
@@ -180,7 +180,7 @@ class virtual_assistant:
             time.sleep(2)
             pg.click(1684,977)
 
-        elif 'send mail' in command:
+        elif 'send mail' in command:                    #change the coordinate  according to your pc interface
             self.speak("Sending Mail .........")
             webbrowser.open("https://mail.google.com/")
             time.sleep(10)
